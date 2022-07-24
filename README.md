@@ -15,7 +15,7 @@ pip install -r requirements.txt
 ```
 ## Settings
 1. Change the ```EMAIL```, ```PASSWORD``` to your **login credentials**
-2. Set the right ```ID``` of your GYM. The ID is behind the studio in the url of the gym (https://my.mcfit.com/studio/**cnNnLWdyb3VwOjE0MTQwNDgzMjA=**) **DONT FORGET THE EQUAL CHARACTER**
+2. Set the right ```ID``` of your GYM. The ID is behind the studio in the url of the gym (https://my.mcfit.com/studio/ **cnNnLWdyb3VwOjE0MTQwNDgzMjA=**) **DONT FORGET THE EQUAL CHARACTER**
 3. Create and set the ```token``` of your discord bot.
 
 ```env
