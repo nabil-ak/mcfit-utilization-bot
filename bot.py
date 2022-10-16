@@ -13,7 +13,13 @@ STUDIO = {"hash":os.environ['STUDIO'], "int":(b64decode(os.environ['STUDIO'].enc
 S = requests.Session()
 
 try:
-    NAME = requests.get("https://my.mcfit.com/sponsorship/v1/public/studios/"+STUDIO["hash"]).json()["name"]
+    res = requests.get("https://my.mcfit.com/sponsorship/v1/public/studios/"+STUDIO["hash"],
+        headers={
+        "x-public-facility-group":"MCFIT-2DBEBDE87C264635B943F583D13156C0"
+        }
+    )
+    res.raise_for_status()
+    NAME=res.json()["name"]
 except Exception as e:
     print(e)
     print("Your Studio ID is wrong")
