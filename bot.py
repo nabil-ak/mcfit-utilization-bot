@@ -138,7 +138,7 @@ async def get_util_v2():
 async def on_ready():
     print(f"We have logged in as {bot.user}")
 
-@bot.slash_command(description="Show the current Utilization")
+@bot.slash_command(description="Show today's utilization")
 async def util(ctx):
     try:
         if UTILIZATION_VERSION == 1:
@@ -169,6 +169,42 @@ async def util(ctx):
 
         embed.add_field(name="Location", value=f"```{NAME}```", inline=False)
         embed.add_field(name="Time", value=f"```{time}```")
+        embed.add_field(name="Status", value=f"```{status}```")
+        embed.set_footer(text=f"{datetime.now().strftime('%d.%m.%Y %H:%M:%S')}")
+        await ctx.respond(embed=embed)
+    except Exception as e:
+        print(e)
+        await ctx.respond(f"Error")
+
+@bot.slash_command(description="Show the current Utilization")
+async def now_util(ctx):
+    try:
+        if UTILIZATION_VERSION == 1:
+            info = await get_util_v1()
+        elif UTILIZATION_VERSION == 2:
+            info = await get_util_v2()
+        embed = discord.Embed(title=f"{NAME} Utilization", color=16774219) 
+        time = ""
+        status = ""
+
+        isCurrentStr = "current"
+        if UTILIZATION_VERSION == 1:
+            info = info["items"]
+            isCurrentStr = "isCurrent"
+        for item in info:
+            if not item[isCurrentStr]:
+                continue
+
+            if item['percentage'] > 80:
+                status = f"🔴 {item['percentage']}%"
+            elif item['percentage'] > 40:
+                status = f"🟡 {item['percentage']}%"
+            else:
+                status = f"🟢 {item['percentage']}%"
+            break
+            
+
+        embed.add_field(name="Location", value=f"```{NAME}```", inline=False)
         embed.add_field(name="Status", value=f"```{status}```")
         embed.set_footer(text=f"{datetime.now().strftime('%d.%m.%Y %H:%M:%S')}")
         await ctx.respond(embed=embed)
