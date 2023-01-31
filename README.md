@@ -30,6 +30,8 @@ DISCORD_BOT_TOKEN = THE_TOKEN_OF_YOUR_DISCORD_BOT
 3. Run the bot with ```python3 bot.py```.
 4. Use the ```/util```command to get the current utilization of your gym.
 
+## Example
+![Discord](images/discord.jpg)
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
