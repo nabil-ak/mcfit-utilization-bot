@@ -31,7 +31,7 @@ DISCORD_BOT_TOKEN = THE_TOKEN_OF_YOUR_DISCORD_BOT
 4. Use the ```/util```command to get the current utilization of your gym.
 
 ## Example
-![Discord](images/discord.jpg)
+![Discord](images/discord.png)
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
