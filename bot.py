@@ -16,11 +16,17 @@ S = requests.Session()
 if len(SESSION) > 8:
     S.cookies.set('SESSION', SESSION)
 
-# API_HOST = "my.mcfit.com"
-API_HOST = "mein.fitx.de"
-PUBLIC_FACILITY_GROUP = "FITXDE-7B7DAC63E1744DE797245D6E314CD8F6"
-TENANT = "fitx"
-UTILIZATION_VERSION = 2
+TENANT = os.environ['BRAND']
+if TENANT == 'mcfit':
+    API_HOST = "my.mcfit.com"
+    UTILIZATION_VERSION = 1
+elif TENANT == 'fitx':
+    API_HOST = "mein.fitx.de"
+    UTILIZATION_VERSION = 2
+else:
+    print(f'Invalid brand: "{TENANT}", use either "mcfit" or "fitx"')
+    exit()
+
 
 try:
     res = requests.get("https://" + API_HOST + "/whitelabelconfigs/web")
@@ -29,7 +35,7 @@ try:
     TENANT = res.json()["tenantName"]
 except Exception as e:
     print(e)
-    print("FitX api has changed, please raise an issue on github")
+    print("API call failed, please raise an issue on github")
     exit()
 
 try:
@@ -79,6 +85,7 @@ async def login():
     r = S.post('https://' + API_HOST + '/login', headers=headers, json=json_data)
     r.raise_for_status()
     print("Session after login: " + S.cookies.get('SESSION'))
+    print("You can save this in the .env file to speed up the login")
 
 async def get_util_v1():
     headers = {
