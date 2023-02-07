@@ -1,10 +1,10 @@
 <img src="https://upload.wikimedia.org/wikipedia/commons/3/3b/Logo_McFIT_GmbH.jpg" alt="icon" width="128" hight="128"/>
 
 
-# Mcfit-Utilization-Bot
+# Utilization-Bot for FitX and McFit
 
 This discord bot will show you the current utilization of your gym.
-You will need your McFIT login credentials to use their API.
+You will need your McFit/FitX login credentials to use their API.
 
 ## Installation
 
@@ -15,10 +15,11 @@ pip install -r requirements.txt
 ```
 ## Settings
 1. Change the ```EMAIL```, ```PASSWORD``` to your **login credentials**
-2. Set the right ```ID``` of your GYM. The ID is behind the studio in the url of the gym (https://my.mcfit.com/studio/ **cnNnLWdyb3VwOjE0MTQwNDgzMjA=**) **DONT FORGET THE EQUAL CHARACTER**
+2. Set the right ```ID``` and ```BRAND``` of your GYM. The ID is behind the studio in the url of the gym (https://my.mcfit.com/studio/ **cnNnLWdyb3VwOjE0MTQwNDgzMjA=**) **DONT FORGET THE EQUAL CHARACTER**. Brand is either `mcfit` or `fitx`.
 3. Create and set the ```token``` of your discord bot.
 
 ```env
+BRAND = ENTER_BRAND
 EMAIL = ENTER_EMAIL
 PASSWORD = ENTER_PASSWORD
 STUDIO = THE_ID_OF_YOUR_STUDIO
@@ -30,10 +31,10 @@ DISCORD_BOT_TOKEN = THE_TOKEN_OF_YOUR_DISCORD_BOT
 3. Run the bot with ```python3 bot.py```.
 4. Use the ```/util```command to get the current utilization of your gym.
 
-
 ## Example
 <img src="https://i.imgur.com/2mABMjF.png" alt="icon" width="265" hight="265"/>
 
+![Discord](images/discord_example.png)
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
